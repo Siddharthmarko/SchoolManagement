@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import Groups from "./component/groups"
+import Groups from './component/Groups'
 import Schools from "./component/Schools"
 import AddSchools from "./component/AddSchool"
 import Form from "./component/Form"
