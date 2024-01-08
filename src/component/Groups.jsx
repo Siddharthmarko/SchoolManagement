@@ -1,10 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { allGroup, deleteGroup } from '../api/api'
+import { Link, useLocation } from 'react-router-dom'
+// import { allGroup, deleteGroup } from '../api/api'
 export default function Groups() {
     // delete wala apan baad kar karte hai 
-    let groupData = allGroup(0);
+    // let groupData = allGroup(0);
     // console.log(groupData);
+    let groupData = '';
+    const location = useLocation();
+    const receivedData = location;
+    console.log(receivedData);
+
     return (
         <div className="flex flex-col">
             <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
@@ -42,7 +47,7 @@ export default function Groups() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {  groupData.map((item, idx) => (
+                                { (groupData )? groupData.map((item, idx) => (
                                         
                                 <tr key={idx} className="bg-white border-b">
                                     <td className="text-xl text-gray-900 font-light px-6 py-4 text-left ">
@@ -54,7 +59,6 @@ export default function Groups() {
                                     <td className="text-xl text-gray-900 font-light px-6 py-4 text-left ">
                                         <strong>{item.Contact_No}</strong>
                                     </td>
-                                    {/* use other than div here */}
                                         <div>
                                             <td className="text-xl text-gray-900 font-light py-4 text-left">
                                                 <Link
@@ -91,7 +95,7 @@ export default function Groups() {
 
                                     
                                 </tr>
-                                    ))}
+                                    )) : ''}
                             </tbody>
                         </table>
                     </div>
