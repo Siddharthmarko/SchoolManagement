@@ -2,6 +2,7 @@
 export default function Layout(){
     return (
         <>
+        
             <title>School</title>
             <nav className="bg-blue-500 p-4 flex items-center justify-between">
                 <div>

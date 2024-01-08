@@ -13,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        
         <Route path="/" element={<Home/>} >
           <Route index element={<Default_admin />} />
           <Route path="group" element={<Groups/>}/>

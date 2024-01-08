@@ -5,6 +5,7 @@ import { getSchool, submitSchool } from "../api/api";
 export default function AddSchool() {
     const { id, groupid } = useParams();
     // console.log(id, groupid);
+    
     let data = {
         _id: null,
         Name: "",

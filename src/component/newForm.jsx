@@ -3,6 +3,7 @@ import React from "react"
 export default function AddGroups() {
     return (
         <>
+        
             <div className="bg-gray-100 flex items-center justify-center h-screen">
                 <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
                     <div className="flex justify-center mb-6">

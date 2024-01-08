@@ -9,6 +9,7 @@ export default function Groups() {
     const location = useLocation();
     const receivedData = location;
     console.log(receivedData);
+    
 
     return (
         <div className="flex flex-col">

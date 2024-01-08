@@ -29,6 +29,7 @@ export default function Home(){
 
 
 return (
+    
     <div className="flex" >       
             <aside className="bg-gray-800 text-white w-64 min-h-screen p-4">
                 <nav>
