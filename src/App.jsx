@@ -4,18 +4,20 @@ import Schools from "./component/Schools"
 import AddSchools from "./component/AddSchool"
 import Form from "./component/Form"
 import { useState } from "react"
+import Home from "./component/home"
+import New from "./component/newForm"
+import Layout from "./component/layout"
 
 function App() {
   
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Groups />} />
-        <Route path="/AddGroup" element={<Form />} />
-        <Route path="/editgroup/:id" element={<Form />} />
-        {/* <Route path="/employee" element={<Groups />} /> */}
-        <Route path="/schools/:id" element={<Schools />} />
-        <Route path="/addschool/:groupid/:id" element={<AddSchools />} />
+        
+        <Route path="/" element={<Home/>} >
+          <Route path="/AddGroup" element={<New />} />
+          
+        </Route>
       </Routes>
     </div>
   )
