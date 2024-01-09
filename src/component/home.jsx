@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {NavLink, Outlet } from "react-router-dom";
+import {Link, NavLink, Outlet } from "react-router-dom";
 
 const url = 'http://localhost:3000/GroupAdmin';
 const userId = 0;
@@ -27,25 +27,24 @@ export default function Home(){
         setHidden(!hidden);
     }
 
-
 return (
     
     <div className="flex" >       
             <aside className="bg-gray-800 text-white w-64 min-h-screen p-4">
                 <nav>
                     <ul className="space-y-2">
-                        {(userData.Groups) ? userData.Groups.map((data) => {
-                            console.log("Data before passing to state:", data);
-                        return <li key={data._id} className="opcion-con-desplegable group">
-                            <NavLink to={{ pathname: "group", state: { group: data  } }} onClick={(e) => sub_list(e)} className="text-white flex items-center justify-between p-2 hover:bg-gray-700">
+                        {(userData.Groups) ? userData.Groups.map((data, idx) => {
+                            
+                        return <li key={data.id} className="opcion-con-desplegable group">
+                            <Link to="group" state={{user: userData, index: idx}} onClick={(e) => sub_list(e)} className="text-white flex items-center justify-between p-2 hover:bg-gray-700">
                             <div className="flex items-center">
                                 <span>{data.Name}</span>
                             </div>
                             <i className="fas fa-chevron-down text-xs" />
-                            </NavLink>
+                            </Link>
                             <ul className="desplegable ml-4 ">
                             {data.Schools.map((data) => {
-                                return <li key={data._id} style={{display : (hidden) ? 'none' : 'block'}} className=" child-list">
+                                return <li key={data.id} style={{display : (hidden) ? 'none' : 'block'}} className=" child-list">
                                         <NavLink
                                         to={`school/Id`}
                                             className="block p-2 text-white hover:bg-gray-700 flex items-center"
@@ -62,7 +61,7 @@ return (
                     </ul>
                 </nav>
             </aside>
-            <div>
+        <div className="w-full">
              <Outlet/>
             </div>
     </div>
