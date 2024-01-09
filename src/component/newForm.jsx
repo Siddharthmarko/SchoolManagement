@@ -1,40 +1,75 @@
-import React from "react"
+import React, { useState } from "react"
+import { useLocation } from "react-router-dom"
 
+let url = 'http://localhost:3000/GroupAdmin';
 export default function AddGroups() {
+    const { state } = useLocation();
+    const dummy = {
+        id: Date.now(),
+        Name: '',
+        Address: '',
+        Contact_No: '',
+        EmailId: '',
+        CreatedBy: '',
+        Schools: [],
+    }
+    const groupId = state.userData.Groups[state.id];
+    const [text, setText] = useState(
+        (state.id !== null) 
+        ? groupId 
+        : dummy );
+    
+    function sub_info(e, prop){
+        setText({
+            ...text,
+            [prop] : e.target.value,
+        });
+    }
+    // console.log(url);
+    function fetchGroup(allData){
+        
+        fetch(url + `/${state.userData.id}`, {
+            method: 'put',
+            headers: { 'Content-Type': 'application/json', },
+            body: JSON.stringify(allData),
+
+        })
+        .then(res => res.json())
+        .then((data) => console.log('add data', data))
+        .catch((err) => console.log("err", err));
+    }
+    function submit(e){
+        e.preventDefault();
+        // const data = new FormData(e.target);
+        // console.log(text);
+        console.log("use state text ", text)
+
+        if(state.id === null){
+            state.userData.Groups.push(text);
+        } else {
+            state.userData.Groups[state.id] = text
+        }
+        // console.log("userdata ", state.userData);
+        fetchGroup(state.userData);
+    }
     return (
         <>
-        
-            <div className="bg-gray-100 flex items-center justify-center h-screen">
-                <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
-                    <div className="flex justify-center mb-6">
-                        <span className="inline-block bg-gray-200 rounded-full p-3">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={24}
-                                height={24}
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    fill="currentColor"
-                                    d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"
-                                />
-                            </svg>
-                        </span>
-                    </div>
+            <div className="bg-gray-100 flex items-center justify-center ">
+                <div className="bg-white p-8 rounded-lg shadow-lg  w-full">
                     <h2 className="text-2xl font-semibold text-center mb-4">
-                        Add Group
+                        {(state.id !== null) ? 'Edit' : 'Add'} Group
                     </h2>
-                    <p className="text-gray-600 text-center mb-6">
-                        Enter your details
-                    </p>
-                    <form >
+                  
+                    <form onSubmit={(e) => submit(e)} >
                         <div className="mb-4">
                             <label htmlFor="Name" className="block text-gray-700 text-sm font-semibold mb-2">
                                 Group Name
                             </label>
                             <input
-                                
-                                
+
+                                value={text.Name}
+                                name="Name"
+                                onChange={(e) => sub_info(e, 'Name') }
                                 type="text"
                                 id="Name"
                                 className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
@@ -47,8 +82,9 @@ export default function AddGroups() {
                                 Address
                             </label>
                             <input
-                             
-                               
+
+                                value={text.Address}
+                                onChange={(e) => sub_info(e, 'Address')}
                                 type="text"
                                 id="Address"
                                 className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
@@ -64,7 +100,9 @@ export default function AddGroups() {
                                 Contact Number
                             </label>
                             <input
-                               
+
+                                value={text.Contact_No}
+                                onChange={(e) => sub_info(e, 'Contact_No')}
                                 type="tel"
                                 id="ContactNumber"
                                 className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
@@ -77,7 +115,9 @@ export default function AddGroups() {
                                 Email Address *
                             </label>
                             <input
-                               
+
+                                value={text.EmailId}
+                                onChange={(e) => sub_info(e, 'EmailId')}
                                 type="email"
                                 id="Emailid"
                                 className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
@@ -90,7 +130,8 @@ export default function AddGroups() {
                                 CreatedBy
                             </label>
                             <input
-                               
+                                value={text.CreatedBy}
+                                onChange={(e) => sub_info(e, 'CreatedBy')}
                                 type="text"
                                 id="createBy"
                                 className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
