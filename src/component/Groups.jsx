@@ -1,104 +1,62 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-// import { allGroup, deleteGroup } from '../api/api'
 export default function Groups() {
-    // delete wala apan baad kar karte hai 
-    // let groupData = allGroup(0);
-    // console.log(groupData);
-    let groupData = '';
-    const location = useLocation();
-    const receivedData = location;
-    console.log(receivedData);
-    
+    let { state } = useLocation();
+    let groupData = state.user.Groups[state.index];
 
     return (
         <div className="flex flex-col">
             <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
                 <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="overflow-hidden">
-                        <table className="min-w-full">
-                            <thead className="bg-white border-b">
-                                <tr>
-                                    <th
-                                        scope="col"
-                                        className="text-xl font-medium text-gray-900 px-6 py-4 text-left"
+                        <div className="flex flex-col">
+                            <div className="flex justify-between mb-4">
+                                <div className="text-xl text-gray-900 font-medium">
+                                    <Link 
+                                        to="add"
+                                        state={{userData: state.user, id: null}}
+                                        className="text-sm bg-slate-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full"
                                     >
-                                        Group Name
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="text-xl font-medium text-gray-900 px-6 py-4 text-left"
-                                    >
-                                        Group Address
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="text-xl font-medium text-gray-900 px-6 py-4 text-left"
-                                    >
-                                        Contact no.
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="text-xl font-medium text-gray-900 px-6 py-4 text-left"
-                                    >
-                                        <Link to={`/AddGroup`} className="text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                                            Add Group
-                                        </Link>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                { (groupData )? groupData.map((item, idx) => (
-                                        
-                                <tr key={idx} className="bg-white border-b">
-                                    <td className="text-xl text-gray-900 font-light px-6 py-4 text-left ">
-                                        <strong>{item.Name}</strong>
-                                    </td>
-                                    <td className="text-xl text-gray-900 font-light px-6 py-4 text-left ">
-                                        <strong>{item.Address}</strong>
-                                    </td>
-                                    <td className="text-xl text-gray-900 font-light px-6 py-4 text-left ">
-                                        <strong>{item.Contact_No}</strong>
-                                    </td>
-                                        <div>
-                                            <td className="text-xl text-gray-900 font-light py-4 text-left">
-                                                <Link
-                                                    to={`/editgroup/${item._id}`}
-                                                    className="text-sm bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
-                                                >
-                                                    Edit
-                                                </Link>
-                                            </td>
-                                            {/* <td className="text-xl text-gray-900 font-light py-4 text-left">
-                                                <Link onClick={() => deleteGroup(idx)}
-                                                    className="text-sm bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
-                                                >
-                                                    Delete
-                                                </Link>
-                                            </td> */}
-                                            <td className="text-xl text-gray-900 font-light py-4 text-left">
-                                                <Link
-                                                    to={`/schools/${item._id}`}
-                                                    className="text-sm bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
-                                                >
-                                                    See Schools
-                                                </Link>
-                                            </td>
-                                            {/* <td className="text-xl text-gray-900 font-light py-4 text-left">
-                                                <Link
-                                                    to={`/employee/${item._id}`}
-                                                    className="text-sm bg-orange-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-                                                >
-                                                    See Employee
-                                                </Link>
-                                            </td> */}
+                                        Add Group
+                                    </Link>
+                                </div>
+                            </div>
+                            {groupData && (
+                                <div key={groupData.id} className="bg-white border mb-4 p-4">
+                                    <div className="flex justify-between mb-4">
+                                        <div className="text-xl text-gray-900 font-medium">
+                                            Group Name: <strong>{groupData.Name}</strong>
                                         </div>
+                                    </div>
+                                    <div className="flex justify-between mb-4">
+                                        <div className="text-xl text-gray-900 font-medium">
+                                            Group Address: <strong>{groupData.Address}</strong>
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <div className="text-xl text-gray-900 font-medium">
+                                            Contact No.: <strong>{groupData.Contact_No}</strong>
+                                        </div>
+                                        <div className="flex space-x-4">
+                                            <Link
+                                                to="add"
+                                                state={{ userData: state.user, id: state.index }}
+                                                className="text-sm bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                                            >
+                                                Edit
+                                            </Link>
+                                            <Link
+                                                to={`/schools/${groupData.id}`}
+                                                className="text-sm bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
+                                            >
+                                                See Schools
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
 
-                                    
-                                </tr>
-                                    )) : ''}
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
