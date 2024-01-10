@@ -1,11 +1,13 @@
 import React, { useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
+import { fetchData as fetchuser } from './home';
 
 let url = 'http://localhost:3000/GroupAdmin';
 export default function AddGroups() {
+    let navigation = useNavigate();
     const { state } = useLocation();
     const dummy = {
-        id: Date.now(),
+        id: Date.now().toString(),
         Name: '',
         Address: '',
         Contact_No: '',
@@ -42,7 +44,7 @@ export default function AddGroups() {
         e.preventDefault();
         // const data = new FormData(e.target);
         // console.log(text);
-        console.log("use state text ", text)
+        // console.log("use state text ", text)
 
         if(state.id === null){
             state.userData.Groups.push(text);
@@ -51,6 +53,9 @@ export default function AddGroups() {
         }
         // console.log("userdata ", state.userData);
         fetchGroup(state.userData);
+        alert('done');
+        navigation(-1);
+        
     }
     return (
         <>
