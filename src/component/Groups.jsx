@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 export default function Groups() {
-
     let { state } = useLocation();
     let groupData = state.user.Groups[state.index];
     return (

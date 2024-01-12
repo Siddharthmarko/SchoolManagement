@@ -2,13 +2,12 @@ import React, { useEffect, useReducer, useState, useContext } from "react";
 import {Link, NavLink, Outlet } from "react-router-dom";
 import UserContext from '../context/UserContext'
 
-const userId = 0;
-const url = 'http://localhost:3000/GroupAdmin';
-
 export default function Home(){
+    // console.log("yes ites here");
+
     const [hidden, setHidden] = useState(true);
     const { userData } = useContext(UserContext)
-    
+    // console.log(userData)
     function sub_list(e) {
         setHidden(!hidden);
     }

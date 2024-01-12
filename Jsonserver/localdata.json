@@ -5,22 +5,5 @@
     "EmailAddress": "rajeshkumar@gmail.com",
     "Password": "1234",
     "createdOn": "10/03/2024",
-    "Groups": [
-        {
-            "id": "0",
-            "Name": "शिक्षा समूह - दिल्ली",
-            "Address": "C-45, वसंत विहार, नई दिल्ली, दिल्ली 110057",
-            "Contact_No": "9811234567",
-            "EmailId": "shikshasamuhdelhi@gmail.com",
-            "CreatedBy": "राजेश कुमार",
-            "Schools": [
-                {
-                    "id": "0",
-                    "Name": "सरस्वती विद्या मंदिर",
-                    "Address": "E-23, द्वारका, नई दिल्ली, दिल्ली 110075",
-                    "ContactNo": "9123456780"
-                }
-            ]
-        }
-    ]
+    "Groups": []
 }

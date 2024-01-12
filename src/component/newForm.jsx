@@ -18,7 +18,12 @@ export default function AddGroups() {
         CreatedBy: '',
         Schools: [],
     }
-    const groupId = state.userData.Groups[state.id];
+    let groupId = '';
+    try {
+        groupId = state.userData.Groups[state.id];
+    } catch {
+        groupId = null
+    }
     const [text, setText] = useState(
         (state.id !== null) 
         ? groupId 
@@ -46,6 +51,7 @@ export default function AddGroups() {
         e.preventDefault();
 
         if(state.id === null){
+            console.log(state.userData);
             state.userData.Groups.push(text);
         } else {
             state.userData.Groups[state.id] = text
