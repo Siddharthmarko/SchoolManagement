@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import UserContext from "./UserContext";
+import database from '../../Jsonserver/localdata.json'
 
 const userId = 0;
 const url = 'http://localhost:3000/GroupAdmin';
@@ -25,6 +26,10 @@ const UserContextProvider = ({ children }) => {
                 dispatch({ type: 'initialize', payload: fetchedData });
             } catch (err) {
                 console.log(err);
+                // console.log("Fetch failed. Using local data instead.", err);
+                // Use local data here
+                const localData = database;
+                dispatch({ type: 'initialize', payload: localData });
             }
         }
 
