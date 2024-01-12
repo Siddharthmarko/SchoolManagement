@@ -1,0 +1,123 @@
+[33mcommit 524ca6b35bc51bd7186d2da457051dd181aa7aba[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Merge: d8cac6e e9b1a1e
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Fri Jan 12 18:58:11 2024 +0530
+
+    Merge branch 'main_1.0'
+
+[33mcommit e9b1a1eae406179977eef45f0d2fc5a7f8b1ca8d[m[33m ([m[1;31morigin/main_1.0[m[33m, [m[1;32mmain_1.0[m[33m)[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Fri Jan 12 15:28:15 2024 +0530
+
+    use context and reducer ke hisaaab se bas changes
+
+[33mcommit ff5d1e4b0d059906d4919b8676479924682b2f94[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Fri Jan 12 15:25:44 2024 +0530
+
+    adding context api
+
+[33mcommit d5b93ccb1b10c65414ca8a780ebcc0fb57f12d78[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Wed Jan 10 15:29:45 2024 +0530
+
+    adding navigation
+
+[33mcommit 43e6f5d9b9ce815e95ad1f53287d43b369672f45[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Wed Jan 10 15:27:53 2024 +0530
+
+    made changes
+
+[33mcommit b08eb90d8a4f1d322816b6eb048d4dcef41a5a84[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Wed Jan 10 15:26:32 2024 +0530
+
+    Add this school page
+
+[33mcommit 284005d79293097f9e2eda0f0956332f4b3f7e76[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Wed Jan 10 15:04:48 2024 +0530
+
+    adding forms
+
+[33mcommit 71783e4ae8d17731edfe1cc2d707b10454ba77e3[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Wed Jan 10 15:03:17 2024 +0530
+
+    school form are done for edit or new one
+
+[33mcommit 4e3080bfae43daa345d2aa83e313a936b076ec34[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Tue Jan 9 21:35:57 2024 +0530
+
+    ab object ke sath kaam kar rahe pahle array tha aur baki awai changes
+
+[33mcommit 547c4f28125be5282fe0008c05b9ce4878674185[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Tue Jan 9 21:33:08 2024 +0530
+
+    just syntex improevment
+
+[33mcommit ab41499f6632062086e847c7cbe5789275b24ed1[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Tue Jan 9 21:29:58 2024 +0530
+
+    edit/add group data and insert into DB
+
+[33mcommit 7393749430109a1c150f54a8d24201f3bfe5aa0d[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Mon Jan 8 20:49:17 2024 +0530
+
+    done
+
+[33mcommit 005d1e41514732641340388e5b7d66b69fa733f5[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Mon Jan 8 20:48:13 2024 +0530
+
+    done
+
+[33mcommit 78ecb19b431a0fc3bf4ecef597343db2172d1f85[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Mon Jan 8 20:36:59 2024 +0530
+
+    somechanges
+
+[33mcommit d8cac6eb1b4a4de1fe688cf59f9c10ef059c2920[m[33m ([m[1;31morigin/main[m[33m)[m
+Merge: 4cf6fc5 cba92c6
+Author: Goutam marko <92375052+Siddharthmarko@users.noreply.github.com>
+Date:   Mon Jan 8 20:32:39 2024 +0530
+
+    Merge pull request #1 from Siddharthmarko/main_1.0
+    
+    Main 1.0
+
+[33mcommit cba92c65a8fdd426e00e8bcb4531cdb001d69348[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Mon Jan 8 15:14:23 2024 +0530
+
+    ab routes ko children mai rakhte jayenge
+
+[33mcommit a72376e9d48490828433f9f078e94519cf3b95f1[m[33m ([m[1;32m1.0[m[33m)[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Mon Jan 8 09:29:32 2024 +0530
+
+    fake server of json
+
+[33mcommit 4cf6fc52d4d2693617d73fa9417ea1560a34520d[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Thu Jan 4 20:15:54 2024 +0530
+
+    got an error at netify
+
+[33mcommit 7e5f32b88ca644d416e0bbdeb2eb4f67f7445ef1[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Thu Jan 4 20:07:02 2024 +0530
+
+    edit, submit done
+
+[33mcommit b786f6ea87d439838d828744a07671c17f9c3dde[m
+Author: Siddharth <siddhartha.marko.3@gmail.com>
+Date:   Wed Jan 3 19:52:01 2024 +0530
+
+    initialize vite project
