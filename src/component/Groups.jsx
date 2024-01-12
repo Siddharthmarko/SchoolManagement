@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 export default function Groups() {
+
     let { state } = useLocation();
     let groupData = state.user.Groups[state.index];
-
     return (
         <div className="flex flex-col">
             <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
@@ -44,12 +44,6 @@ export default function Groups() {
                                                 className="text-sm bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
                                             >
                                                 Edit
-                                            </Link>
-                                            <Link
-                                                to={`/schools/${groupData.id}`}
-                                                className="text-sm bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
-                                            >
-                                                See Schools
                                             </Link>
                                         </div>
                                     </div>

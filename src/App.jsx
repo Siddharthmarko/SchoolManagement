@@ -9,10 +9,12 @@ import Layout from "./component/layout"
 import Default_admin from "./component/default_admin"
 import NewForm from './component/newForm'
 import SchoolForm from "./component/schoolForm"
+import UserContextProvider from './context/UserContextProvider'
 
 function App() {
 
   return (
+    <UserContextProvider>
     <div className="App">
       <Routes>
         <Route path="/" element={<Home/>} >
@@ -24,6 +26,7 @@ function App() {
         </Route>
       </Routes>  
     </div>
+  </UserContextProvider>
   )
 }
 

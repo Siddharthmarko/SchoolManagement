@@ -1,35 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState, useContext } from "react";
 import {Link, NavLink, Outlet } from "react-router-dom";
-
-const url = 'http://localhost:3000/GroupAdmin';
-export async function fetchData() {
-    try {
-        const res = await fetch(url);
-        const data = await res.json();
-        return data[userId];
-    } catch (err) {
-        console.log(err);
-        return [];
-    }
-}
+import UserContext from '../context/UserContext'
 
 const userId = 0;
+const url = 'http://localhost:3000/GroupAdmin';
+
 export default function Home(){
-    const [hidden, setHidden] =  useState(true);
-    const [userData, setUserData] = useState([]);
-
-   
-    useEffect(() => {
-        fetchData().then((data) => 
-        setUserData(data))
-        console.log("from hoem ", userData);
-    }, []);
-
-    // this sublist need to improve yet it only good for one group
-    function sub_list(e){
+    const [hidden, setHidden] = useState(true);
+    const { userData } = useContext(UserContext)
+    
+    function sub_list(e) {
         setHidden(!hidden);
     }
-
 return (
     
     <div className="flex" >       

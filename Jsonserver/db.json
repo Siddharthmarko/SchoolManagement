@@ -1,36 +1,54 @@
 {
-    "GroupAdmin": [
+  "GroupAdmin": [
+    {
+      "id": "0",
+      "FirstName": "Rajesh",
+      "LastName": "Kumar",
+      "EmailAddress": "rajeshkumar@gmail.com",
+      "Password": "1234",
+      "createdOn": "10/03/2024",
+      "Groups": [
         {
-            "_id": 0,
-            "FirstName": "Rajesh",
-            "LastName": "Kumar",
-            "EmailAddress": "rajeshkumar@gmail.com",
-            "Password": "1234",
-            "createdOn": "10/03/2024",
-            "Groups": [
-                {
-                    "_id": 0,
-                    "Name": "शिक्षा समूह - दिल्ली",
-                    "Address": "C-45, वसंत विहार, नई दिल्ली, दिल्ली 110057",
-                    "Contact_No": "9811234567",
-                    "EmailId": "shikshasamuhdelhi@gmail.com",
-                    "CreatedBy": "राजेश कुमार",
-                    "Schools": [
-                        {
-                            "_id": 0,
-                            "Name": "सरस्वती विद्या मंदिर",
-                            "Address": "E-23, द्वारका, नई दिल्ली, दिल्ली 110075",
-                            "ContactNo": "9123456780"
-                        },
-                        {
-                            "_id": 1,
-                            "Name": "दिल्ली पब्लिक स्कूल",
-                            "Address": "B-4, वसंत कुंज, नई दिल्ली, दिल्ली 110070",
-                            "ContactNo": "9876543210"
-                        }
-                    ]
-                }
-            ]
+          "id": "0",
+          "Name": "शिक्षा समूह - दिल्ली",
+          "Address": "C-45, वसंत विहार, नई दिल्ली, दिल्ली 110057",
+          "Contact_No": "9811234567",
+          "EmailId": "shikshasamuhdelhi@gmail.com",
+          "CreatedBy": "राजेश कुमार",
+          "Schools": [
+            {
+              "id": "0",
+              "Name": "सरस्वती विद्या मंदिर",
+              "Address": "E-23, द्वारका, नई दिल्ली, दिल्ली 110075",
+              "ContactNo": "9123456780"
+            },
+            {
+              "Name": "due due",
+              "Address": "",
+              "ContactNo": ""
+            },
+            {
+              "Name": "cvvc",
+              "Address": "",
+              "ContactNo": ""
+            },
+            {
+              "Name": "nont only this",
+              "Address": "",
+              "ContactNo": ""
+            }
+          ]
+        },
+        {
+          "id": "1705053221164",
+          "Name": "only",
+          "Address": "",
+          "Contact_No": "",
+          "EmailId": "",
+          "CreatedBy": "",
+          "Schools": []
         }
-    ]
+      ]
+    }
+  ]
 }

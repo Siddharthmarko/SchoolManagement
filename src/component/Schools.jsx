@@ -51,6 +51,14 @@ export default function Schools() {
                                             >
                                                 Edit
                                             </Link>
+                                            <Link
+                                                to="add"
+                                                // state={{ userData: state.user, id: state.index }}
+                                                state={state}
+                                                className="text-sm bg-red-200 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                                            >
+                                                delete
+                                            </Link>
                                         
                                         </div>
                                     </div>

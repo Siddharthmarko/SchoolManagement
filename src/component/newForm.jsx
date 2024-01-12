@@ -1,11 +1,14 @@
-import React, { useState } from "react"
+import React, { useState, useReducer, useContext } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import { fetchData as fetchuser } from './home';
+import UserContext from '../context/UserContext'
+
 
 let url = 'http://localhost:3000/GroupAdmin';
 export default function AddGroups() {
     let navigation = useNavigate();
     const { state } = useLocation();
+    const { dispatch } = useContext(UserContext)
+    
     const dummy = {
         id: Date.now().toString(),
         Name: '',
@@ -27,7 +30,6 @@ export default function AddGroups() {
             [prop] : e.target.value,
         });
     }
-    // console.log(url);
     function fetchGroup(allData){
         
         fetch(url + `/${state.userData.id}`, {
@@ -42,18 +44,16 @@ export default function AddGroups() {
     }
     function submit(e){
         e.preventDefault();
-        // const data = new FormData(e.target);
-        // console.log(text);
-        // console.log("use state text ", text)
 
         if(state.id === null){
             state.userData.Groups.push(text);
         } else {
             state.userData.Groups[state.id] = text
         }
-        // console.log("userdata ", state.userData);
+
         fetchGroup(state.userData);
         alert('done');
+        dispatch({ type: 'initialize', payload: state.userData });
         navigation(-1);
         
     }

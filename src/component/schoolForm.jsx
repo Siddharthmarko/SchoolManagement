@@ -1,10 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
+import UserContext from '../context/UserContext'
+
 import { useLocation, useNavigate } from "react-router-dom"
-import { fetchData as fetchuser } from "./home";
 
 let url = 'http://localhost:3000/GroupAdmin';
 export default function SchoolForm() {
     let navigate = useNavigate();
+    const { dispatch } = useContext(UserContext)
+
     const {state} = useLocation();
     const dummy =  {
         Name: '',
@@ -39,11 +42,11 @@ export default function SchoolForm() {
     } else {
         state.user.Groups[state.groupIdx].Schools[state.index] = text;
     }
-    // console.log(state.user);
+    
     fetchData(state.user);
     alert('done');
-    fetchuser();
     navigate(-1);
+    dispatch({ type: 'initialize', payload: state.user });
 
     }
 
