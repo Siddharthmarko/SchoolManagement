@@ -21,8 +21,31 @@
               "Name": "सरस्वती विद्या मंदिर",
               "Address": "E-23, द्वारका, नई दिल्ली, दिल्ली 110075",
               "ContactNo": "9123456780"
+            },
+            {
+              "Name": "new school",
+              "Address": "",
+              "ContactNo": "909852"
             }
           ]
+        },
+        {
+          "id": "1705133199949",
+          "Name": "new group",
+          "Address": "",
+          "Contact_No": "85241",
+          "EmailId": "",
+          "CreatedBy": "",
+          "Schools": []
+        },
+        {
+          "id": "1705133251986",
+          "Name": "new  g oup no. 2",
+          "Address": "",
+          "Contact_No": "",
+          "EmailId": "",
+          "CreatedBy": "",
+          "Schools": []
         }
       ]
     }
