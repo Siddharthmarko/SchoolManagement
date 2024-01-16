@@ -1,7 +1,7 @@
 .container {
     border: 1px solid red;
 }
-ul {
+.ul {
     border: 1px solid black;
     padding: 10px 20px;
 }
@@ -14,7 +14,8 @@ button {
     padding: 6px;
 }
 .list {
-    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
 }
 input {
     display: block;
