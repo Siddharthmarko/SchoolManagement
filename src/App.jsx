@@ -1,135 +1,174 @@
-import React, { useState, useEffect, useReducer, useContext } from "react"
-import UserContextProvider from './context/UserContextProvider'
+import React, { useState, useEffect, useContext } from "react"
 import UserContext from './context/UserContext'
 
-function Form({data}){
+/* 
+  jab group add hoga to koi prop nahi bhej jayega isiliye array jiska koi  use nai bas condtion ke liye hai
+  jab schools add hoga to object bheja jayega with group index, school index 
+*/
+function Form({data = []}){
+  const {demoObj, setDemoObj } = useContext(UserContext);
+  const [input, setInput] = useState({});
   
-  let info = {}
-  function submitSchool(){
-    data.School.push(info);
-  }
-  console.log(data);
-  function submitGroup(){
-    info.School = []; 
-    data.push(info);
-  }
-
-function edit(e, prop){
-  info = {
-    ...info,
-      [prop] : e.target.value,
+  function submitForm(e){
+    e.preventDefault();
+    
+    if (Array.isArray(data)) {
+       input.School = []; // every groups will have school array
+       demoObj.push(input);
+       setDemoObj(demoObj)
+    } else {
+      demoObj[data.id]?.School.push(input); // inserting new school data
+      // console.log(demoObj); 
+      setDemoObj(demoObj);
     }
-}
+     
+  }
+  function changeInput(e){
+    const {name,value} = e.target;
+    setInput((input) => ({...input, [name]: value}))
+  }
 
   return (
     <div>
-      <input onChange={(e) => edit(e, 'Name')} type="text" value={data?.Name} />
-      <input onChange={(e) => edit(e, 'Number')} type="text" value={data?.Number} />
-      <input onChange={(e) => edit(e, 'Hidden')} type="text" value={data?.Hidden} />
-      <button onClick={() => (data?.School) ? submitSchool () : submitGroup()} > submit</button>
+      <form onSubmit={(e) => submitForm(e)}>
+        <input type="text" name="Name" onChange={(e) => changeInput(e)} value={input?.Name} />
+        <input type="text" name="Number" onChange={(e) => changeInput(e)} value={input?.Number} />
+        <input type="text" name="Hidde" onChange={(e) => changeInput(e)} value={input?.Hidden}/>
+        <button>Submit</button>
+      </form>
     </div>
   )
 }
 
-function Name({ hasList = false, data, nextlList }){
-const [hide, setHide] = useState(false);
-const [edit, setEdit] = useState(false);
-const [addArray, setAddArray] = useState(false);
+function Groups({ data, showSchool }){
+  const [editable, setEditable] = useState(true);
+  const [input, setInput] = useState(data);
+  const { demoObj, setDemoObj } = useContext(UserContext);
+  const [show, setShow] = useState(true);
+  const [add, setAdd] = useState(false);
 
-// console.log(data);
-return (
-  <div className="list" >
-    <h2>Heading </h2>
-    <button onClick={() => {setHide(!hide); setAddArray(false); setEdit(false)}}>Details</button>
-    <button onClick={() => setAddArray(!addArray)} >Add school</button>
-    <button onClick={()=> {setEdit(true); setAddArray(false); setHide(false)}} >Edit This</button>
-    {!hasList ? '' : <button onClick={ () => nextlList()} >Next list</button>}  
-  {
-    (addArray)
-    ? <Form data={data.School} />
-        : <div hidden={hide}>
-          {
-            (!edit)
-              ? <div>
-                <h2>Name : {data?.Name}</h2>
-                <h2>Number : {data?.Number}</h2>
-                <h2>Hidden : {data?.Hidden}</h2>
-              </div>
-              : <div>
-                <input onChange={(e) => edit(e)} type="text" value={data?.Name} />
-                <input onChange={(e) => edit(e)} type="text" value={data?.Number} />
-                <input onChange={(e) => edit(e)} type="text" value={data?.Hidden} />
-              </div>
-          }
-
-        </div>
-  }
   
-  </div>
-)
+  function handleEit(){
+    setEditable(!editable);
+    if(!editable){
+      demoObj[data.id] = data;
+      setDemoObj(demoObj);
+      // console.log(demoObj);
+    }
+  }
+
+  function changeInput(e) {
+    const { name, value } = e.target;
+    setInput((input) => ({ ...input, [name]: value }))
+  }
+    return(
+      <div>
+        <button onClick={() => setShow(!show)}>Show details</button>
+        <button onClick={() => setAdd(!add)}>Add School</button>
+        <button onClick={() => showSchool(data.id)}>show School</button>
+        { (add) ? <Form data={data}/> : '' } 
+        {(show)  
+          ? <div>
+
+              <button onClick={() => handleEit()} >{(editable) ? 'Edit' : 'Save'}</button>
+              <h3>Details</h3>
+
+              <input type="text" name="Name" 
+                onChange={(e) => changeInput(e)} 
+                value={input?.Name} readOnly={editable}/>
+
+              <input type="text" name="Number" 
+                onChange={(e) => changeInput(e)} 
+                value={input?.Number} readOnly={editable} />
+
+              <input type="text" name="Hidde" 
+              onChange={(e) => changeInput(e)} 
+              value={input?.Hidden} readOnly={editable} /> 
+
+            </div> : ''}
+      </div>
+    )
 }
+function School({ data }) {
+  const [editable, setEditable] = useState(true);
+  const [input, setInput] = useState(data);
+  const { demoObj, setDemoObj } = useContext(UserContext);
+  const [show, setShow] = useState(false);
 
-function Details(){
-  // const [demoObj, setDemoObj] = useState([]);
-  const {demoObj} = useContext(UserContext)
-  // console.log(demoObj);
-  const [secondList,setSecondList] = useState(true);
-  const [thirdList, setThirdList] = useState(true);
-  const [form, setForm] = useState(false);
-
-  console.log(demoObj);
-  function formOpen(){
-    setForm(!form);
+  function handledit() {
+    console.log(input)
+    setEditable(!editable);
+    if (!editable) {
+      demoObj[data.Groupid].School[data.id] = input;
+      console.log(demoObj);
+      setDemoObj(demoObj);
+    }
   }
 
-  function hideThird(){
-    setThirdList(!thirdList);
+  function changeInput(e) {
+    const { name, value } = e.target;
+    setInput((input) => ({ ...input, [name]: value }))
   }
-  function hideSecond(){
-    setSecondList(!secondList);
-  }
-
-  return ( 
+  return (
     <div>
-      <button onClick={() => formOpen() } >Add Group</button>
-      {form ? <Form data={demoObj} /> : ''}
-      {
-        (demoObj.length > 0) 
-        ? demoObj.map((item) => {
-          // console.log(item);
-          let hasSchool = item.School;
-          let schoolList = (hasSchool.length >= 1) ? true : false;
-          // console.log(hasSchool.length);
-          return <ul>
-              <li>
-              <Name data={item} hasList={schoolList} nextlList={hideThird} />
-                {
-                  (hasSchool.length > 0) 
-                  ? hasSchool.map((item) => {
-
-                    return <ul hidden={thirdList} >
-                      <li>
-                        <Name data={item} hasList={false}/>
-                      </li>
-                    </ul>
-                  }) : ''
-                }
-              </li>
-          </ul>
-        })
-        : ''
-      }
+      <button onClick={() => setShow(!show)}>Show school details</button>
+    
+      {(show)
+        ? <div>
+          <button onClick={() => handledit()} >{(editable) ? 'Edit' : 'Save'}</button>
+          <input type="text" name="Name" onChange={(e) => changeInput(e)} value={input?.Name} readOnly={editable} />
+          <input type="text" name="Number" onChange={(e) => changeInput(e)} value={input?.Number} readOnly={editable} />
+          <input type="text" name="Hidde" onChange={(e) => changeInput(e)} value={input?.Hidden} readOnly={editable} />
+        </div> : ''}
     </div>
   )
 }
+export default function App(){
+  const [form, setForm] = useState();
+  const { demoObj } = useContext(UserContext);
+  const [show, setShowSchool] = useState(false);
 
-function App() {
-
+  // it show school list of particular group by using id
+  function showSchool(id){
+    if(show === id){
+      setShowSchool(false);
+    } else {
+      setShowSchool(id)
+    }
+  }
   return (
-    <UserContextProvider>
-        <Details />
-    </UserContextProvider>
+    <div>
+      <button onClick={() => setForm(!form)}>Add Group</button>
+      {form ? <Form /> : ''}
+
+      {
+        // If there is a groups object
+        (demoObj?.length > 0) ? demoObj.map((data, Groupidx) => {
+             data.id = Groupidx;
+          let school = data.School; // will be used for nested list
+          
+          return (
+            <div className="ul">
+              <Groups data={data} showSchool={showSchool}/>
+
+              { 
+                (show === Groupidx) 
+                ? (school.length > 0)  ? school.map((data, index) => {
+                           data.id = index;
+                      data.Groupid = Groupidx;
+
+                return <div className="list">
+                          <School data={data}/> 
+                      </div> 
+
+              }) 
+              : 'no record' 
+              : '' }
+            </div>
+          )
+        }) : ''
+      }
+
+    </div>
   )
 }
-
-export default App
